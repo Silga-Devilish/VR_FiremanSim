@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/\u4EA4\u4E92\u6E90\u7801/Scenes/PracticeScene.unity"
     guid: da11572242586a748870451b5d06305a
+  - enabled: 1
+    path: "Assets/\u4EA4\u4E92\u6E90\u7801/Scenes/ZhanTing.unity"
+    guid: 6eb15a12ecc06f64c8c131bfc82b7797
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8b808807e56c19044ab100ddc78293c6, type: 2}
