@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: d5e19c6dc8bcc734eb49794717bbb14c
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _ScanOffsetTex: {fileID: 2800000, guid: 4bbf045a9f687084ea4bc84d53c39623, type: 3}
+  - _ScanLine1Tex: {fileID: 2800000, guid: afb16754b93daf04187b10b438f7a250, type: 3}
+  - _ScanLine2Tex: {fileID: 2800000, guid: 4bbf045a9f687084ea4bc84d53c39623, type: 3}
+  - _WireFrame: {fileID: 2800000, guid: 92f284b27dea88e41885444624ec2963, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

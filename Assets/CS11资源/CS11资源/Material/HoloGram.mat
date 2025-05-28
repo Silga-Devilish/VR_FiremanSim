@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: HoloGram
+  m_Shader: {fileID: 4800000, guid: d5e19c6dc8bcc734eb49794717bbb14c, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ZWRITEMODE_ON
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3001
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _GlitchScanLineTex:
+        m_Texture: {fileID: 2800000, guid: afb16754b93daf04187b10b438f7a250, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseMap:
+        m_Texture: {fileID: 2800000, guid: 6533e5ad894c3d049b6333aa42577dda, type: 3}
+        m_Scale: {x: 0.01, y: 0.01}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 77b91526e481d164aa4fee6e8b5fc94c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ScanLine1:
+        m_Texture: {fileID: 2800000, guid: afb16754b93daf04187b10b438f7a250, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ScanLine1Tex:
+        m_Texture: {fileID: 2800000, guid: afb16754b93daf04187b10b438f7a250, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ScanLine2Tex:
+        m_Texture: {fileID: 2800000, guid: 4bbf045a9f687084ea4bc84d53c39623, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ScanOffsetTex:
+        m_Texture: {fileID: 2800000, guid: afb16754b93daf04187b10b438f7a250, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ScanTex:
+        m_Texture: {fileID: 2800000, guid: afb16754b93daf04187b10b438f7a250, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WireFrame:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Alpha: 0.55
+    - _GlitchFreq: 0.5
+    - _GlitchHFTilling: 100
+    - _GlitchHardness: 3
+    - _GlitchSpeed: -0.5
+    - _GlitchTilling: 200
+    - _GlitchWidth: 0.3
+    - _HFTilling: 100
+    - _Line1Alpha: 0.08
+    - _Line1Freq: 5
+    - _Line1Hardness: 1
+    - _Line1Speed: -1
+    - _Line1Width: 0
+    - _Line2Alpha: 0.24
+    - _Line2Freq: 0.08
+    - _Line2Hardness: 2
+    - _Line2Speed: -0.5
+    - _Line2Width: 0.55
+    - _RimBais: 0.01
+    - _RimPower: 3
+    - _RimScale: 2
+    - _ScanInvent: 0
+    - _ScanOffsetFreq: 1
+    - _ScanOffsetHardness: 5
+    - _ScanOffsetSpeed: -0.4
+    - _ScanOffsetWidth: 0
+    - _ScanPower: 0
+    - _ScanSpeed: -1
+    - _ScanTilling: 3
+    - _ShinningControl: 0.04
+    - _WireFrameIntensity: 1
+    - _ZWriteMode: 1
+    - __dirty: 0
+    m_Colors:
+    - _GlitchVertexOffset: {r: 2, g: 0, b: 0, a: 0}
+    - _MainColor: {r: 0, g: 0.48900306, b: 1.3041192, a: 0.003921569}
+    - _Scan1Color: {r: 0, g: 1.9447688, b: 8.254463, a: 0}
+    - _ScanLineVertexOffset: {r: 2, g: 0, b: 0, a: 0}
+    - _ScanSpeed: {r: 0, g: 1, b: 0, a: 0}
+    - _ShinningSpeed: {r: 0, g: 0.5, b: 0, a: 0}
+    - _VertexOffset: {r: -1.5, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
