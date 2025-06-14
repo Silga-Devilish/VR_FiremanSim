@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR心肺复苏教学</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>CPR<span>心肺复苏</span>急救教学</h1>
+            <div class="tech-lines"></div>
+        </header>
+        
+        <main class="content">
+            <section class="cpr-steps">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <h2>评估环境安全</h2>
+                    <div class="step-content">
+                        <p>确保现场环境安全，避免二次伤害</p>
+                        <div class="animation-placeholder"></div>
+                    </div>
+                </div>
+                
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <h2>检查反应</h2>
+                    <div class="step-content">
+                        <p>轻拍患者双肩，大声呼唤："你还好吗？"</p>
+                        <div class="animation-placeholder"></div>
+                    </div>
+                </div>
+                
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <h2>呼叫帮助</h2>
+                    <div class="step-content">
+                        <p>如无反应，立即呼叫急救电话或请旁人帮忙</p>
+                        <div class="animation-placeholder"></div>
+                    </div>
+                </div>
+                
+                <div class="step" data-step="4">
+                    <div class="step-number">4</div>
+                    <h2>开放气道</h2>
+                    <div class="step-content">
+                        <p>仰头提颏法开放气道，检查呼吸</p>
+                        <div class="animation-placeholder"></div>
+                    </div>
+                </div>
+                
+                <div class="step" data-step="5">
+                    <div class="step-number">5</div>
+                    <h2>胸外按压</h2>
+                    <div class="step-content">
+                        <ul>
+                            <li>位置：两乳头连线中点</li>
+                            <li>深度：5-6厘米</li>
+                            <li>频率：100-120次/分钟</li>
+                            <li>按压30次</li>
+                        </ul>
+                        <div class="animation-placeholder"></div>
+                    </div>
+                </div>
+                
+                <div class="step" data-step="6">
+                    <div class="step-number">6</div>
+                    <h2>人工呼吸</h2>
+                    <div class="step-content">
+                        <ul>
+                            <li>捏住鼻子</li>
+                            <li>正常吸气后包住患者嘴部吹气</li>
+                            <li>每次吹气1秒，看到胸部抬起</li>
+                            <li>吹气2次</li>
+                        </ul>
+                        <div class="animation-placeholder"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="controls">
+                <button id="prev-btn" class="control-btn">上一步</button>
+                <button id="next-btn" class="control-btn">下一步</button>
+                <button id="reset-btn" class="control-btn">重置</button>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>© 2023 VR消防模拟训练系统 - 心肺复苏教学模块</p>
+            <div class="tech-lines"></div>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -238,6 +238,13 @@
       },
       "url": "https://packages.unity.cn"
     },
+    "net.gree.unity-webview": {
+      "version": "https://github.com/gree/unity-webview.git?path=/dist/package",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "a12e2e6a53538ebe1a9a9781f7103a53dd987a55"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

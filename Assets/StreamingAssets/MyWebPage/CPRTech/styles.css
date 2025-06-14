@@ -1,0 +1,245 @@
+:root {
+    --primary-color: #e63946; /* 红色 */
+    --secondary-color: #1d3557; /* 深蓝色 */
+    --accent-color: #457b9d; /* 浅蓝色 */
+    --text-color: #f1faee; /* 浅色文字 */
+    --bg-color: #0a192f; /* 深色背景 */
+    --highlight-color: #a8dadc; /* 高亮色 */
+    --tech-line-color: rgba(168, 218, 220, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding: 20px 0;
+}
+
+.header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.header h1 span {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--highlight-color);
+    letter-spacing: 4px;
+    margin-top: 5px;
+}
+
+.tech-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, var(--tech-line-color) 1px, transparent 1px),
+        linear-gradient(var(--tech-line-color) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cpr-steps {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 30px;
+}
+
+.step {
+    background: rgba(29, 53, 87, 0.7);
+    border-left: 4px solid var(--primary-color);
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(230, 57, 70, 0.1) 0%, rgba(29, 53, 87, 0.8) 100%);
+    z-index: -1;
+}
+
+.step.active {
+    border-left: 4px solid var(--highlight-color);
+    background: rgba(29, 53, 87, 0.9);
+    box-shadow: 0 0 15px rgba(168, 218, 220, 0.3);
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
+}
+
+.step h2 {
+    color: var(--highlight-color);
+    margin-bottom: 15px;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    padding-left: 40px;
+}
+
+.step-content {
+    padding-left: 40px;
+}
+
+.step-content p, .step-content ul {
+    margin-bottom: 15px;
+}
+
+.step-content ul {
+    list-style-position: inside;
+    padding-left: 10px;
+}
+
+.step-content li {
+    margin-bottom: 8px;
+}
+
+.animation-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: rgba(69, 123, 157, 0.2);
+    border: 1px dashed var(--accent-color);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    margin-top: 20px;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.control-btn {
+    padding: 12px 25px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.control-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(168, 218, 220, 0.4), transparent);
+    transition: all 0.5s ease;
+}
+
+.control-btn:hover {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
+}
+
+.control-btn:hover::before {
+    left: 100%;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px 0;
+    position: relative;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .step {
+        padding: 15px;
+    }
+    
+    .step h2 {
+        padding-left: 30px;
+    }
+    
+    .step-content {
+        padding-left: 30px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .control-btn {
+        width: 100%;
+    }
+}

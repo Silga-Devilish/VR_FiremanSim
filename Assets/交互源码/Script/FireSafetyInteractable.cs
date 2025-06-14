@@ -1,50 +1,43 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class FireSafetyInteractable : MonoBehaviour
 {
-    [Header("³¡¾°ÉèÖÃ")]
-    [Tooltip("Ïû·À°²È«ÖªÊ¶UIÃæ°å")]
-    public GameObject fireSafetyPanel; // ĞÂÔö£ºÒıÓÃÏû·À°²È«ÖªÊ¶UIÃæ°å
-
-    [Header("½»»¥ÉèÖÃ")]
-    [Tooltip("½»»¥ÌáÊ¾ÏÔÊ¾µÄÎÄ±¾")]
-    public string interactionText = "°´E ²é¿´Ïû·À°²È«ÖªÊ¶";
-
-    [Tooltip("½»»¥¼ì²â¾àÀë")]
+    [Header("UI References")]
+    public GameObject fireSafetyPanel;
+    
+    [Header("Settings")]
+    public string interactionText = "Press E to view fire safety knowledge";
     public float interactionDistance = 3f;
-
-    [Header("UIÉèÖÃ")]
-    [Tooltip("ÍÏÈë³¡¾°ÖĞµÄTextMeshProÌáÊ¾UI¶ÔÏó")]
+    
+    [Header("UI Elements")]
     public GameObject interactionPrompt;
 
     private bool isPlayerInRange = false;
     private Transform playerTransform;
     private TMP_Text promptText;
+    private FirstPersonController playerController;
+    private bool wasCursorLocked; // è®°å½•ä¹‹å‰çš„é¼ æ ‡é”å®šçŠ¶æ€
+    private bool wasCursorVisible; // è®°å½•ä¹‹å‰çš„é¼ æ ‡å¯è§çŠ¶æ€
 
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
+        
+        if (playerTransform != null)
+        {
+            playerController = playerTransform.GetComponent<FirstPersonController>();
+        }
 
         if (interactionPrompt != null)
         {
             promptText = interactionPrompt.GetComponentInChildren<TMP_Text>();
             interactionPrompt.SetActive(false);
         }
-        else
-        {
-            Debug.LogError("Î´Ö¸¶¨½»»¥ÌáÊ¾UI¶ÔÏó£¡");
-        }
 
-        // ³õÊ¼»¯Ê±Òş²ØÏû·À°²È«ÖªÊ¶Ãæ°å
         if (fireSafetyPanel != null)
         {
             fireSafetyPanel.SetActive(false);
-        }
-        else
-        {
-            Debug.LogError("Î´Ö¸¶¨Ïû·À°²È«ÖªÊ¶UIÃæ°å£¡");
         }
     }
 
@@ -61,9 +54,13 @@ public class FireSafetyInteractable : MonoBehaviour
             UpdatePromptVisibility();
         }
 
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E) && !fireSafetyPanel.activeSelf)
         {
-            ToggleFireSafetyPanel();
+            ShowFireSafetyPanel();
+        }
+        else if (fireSafetyPanel.activeSelf && Input.GetKeyDown(KeyCode.E))
+        {
+            HideFireSafetyPanel();
         }
     }
 
@@ -71,8 +68,8 @@ public class FireSafetyInteractable : MonoBehaviour
     {
         if (interactionPrompt != null)
         {
-            interactionPrompt.SetActive(isPlayerInRange);
-
+            interactionPrompt.SetActive(isPlayerInRange && !fireSafetyPanel.activeSelf);
+            
             if (promptText != null)
             {
                 promptText.text = interactionText;
@@ -80,17 +77,44 @@ public class FireSafetyInteractable : MonoBehaviour
         }
     }
 
-    void ToggleFireSafetyPanel()
+    void ShowFireSafetyPanel()
     {
-        if (fireSafetyPanel != null)
-        {
-            // ÇĞ»»Ãæ°åµÄÏÔÊ¾×´Ì¬
-            bool isActive = !fireSafetyPanel.activeSelf;
-            fireSafetyPanel.SetActive(isActive);
+        if (fireSafetyPanel == null) return;
 
-            // ¿ÉÒÔ¸ù¾İĞèÒªÔÚÕâÀïÔİÍ£ÓÎÏ·
-            // Time.timeScale = isActive ? 0 : 1;
+        // ä¿å­˜å½“å‰çŠ¶æ€
+        wasCursorLocked = Cursor.lockState == CursorLockMode.Locked;
+        wasCursorVisible = Cursor.visible;
+
+        // è§£é”é¼ æ ‡
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
+        // ç¦ç”¨ç©å®¶æ§åˆ¶
+        if (playerController != null)
+        {
+            playerController.enabled = false;
         }
+
+        fireSafetyPanel.SetActive(true);
+        UpdatePromptVisibility();
+    }
+
+    void HideFireSafetyPanel()
+    {
+        if (fireSafetyPanel == null) return;
+
+        // æ¢å¤é¼ æ ‡çŠ¶æ€
+        Cursor.lockState = wasCursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = wasCursorVisible;
+        
+        // æ¢å¤ç©å®¶æ§åˆ¶
+        if (playerController != null)
+        {
+            playerController.enabled = true;
+        }
+
+        fireSafetyPanel.SetActive(false);
+        UpdatePromptVisibility();
     }
 
     void OnDrawGizmosSelected()

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR CPR实践训练</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="practice.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>CPR<span>实践训练</span>模拟系统</h1>
+            <div class="tech-lines"></div>
+        </header>
+        
+        <main class="content">
+            <div class="training-area">
+                <div class="patient-model">
+                    <div class="chest-area" id="chest-target"></div>
+                    <div class="head-area"></div>
+                </div>
+                
+                <div class="feedback-panel">
+                    <div class="feedback-item">
+                        <h3>按压深度</h3>
+                        <div class="meter depth-meter">
+                            <div class="meter-fill" id="depth-fill"></div>
+                            <div class="meter-labels">
+                                <span>浅</span>
+                                <span class="optimal">5-6cm</span>
+                                <span>深</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="feedback-item">
+                        <h3>按压频率</h3>
+                        <div class="meter rate-meter">
+                            <div class="meter-fill" id="rate-fill"></div>
+                            <div class="meter-labels">
+                                <span>慢</span>
+                                <span class="optimal">100-120/分钟</span>
+                                <span>快</span>
+                            </div>
+                        </div>
+                        <div class="bpm-display" id="bpm-display">0 BPM</div>
+                    </div>
+                    
+                    <div class="feedback-item">
+                        <h3>回弹情况</h3>
+                        <div class="recoil-indicator" id="recoil-indicator">
+                            <div class="recoil-bar"></div>
+                            <div class="recoil-label">完全回弹</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="metronome">
+                    <div class="beat-visualizer" id="beat-visualizer"></div>
+                    <div class="metronome-controls">
+                        <button id="start-btn" class="control-btn">开始训练</button>
+                        <button id="stop-btn" class="control-btn" disabled>停止</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <h2>操作指南</h2>
+                <ol>
+                    <li>将双手掌根置于患者胸部中央（两乳头连线中点）</li>
+                    <li>双臂伸直，用上身重量垂直下压</li>
+                    <li>按压深度5-6厘米（成人）</li>
+                    <li>按压频率100-120次/分钟</li>
+                    <li>每次按压后让胸部完全回弹</li>
+                    <li>按压与放松时间大致相等</li>
+                </ol>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>© 2023 VR消防模拟训练系统 - CPR实践模块</p>
+            <div class="tech-lines"></div>
+        </footer>
+    </div>
+    
+    <script src="practice.js"></script>
+</body>
+</html>

@@ -6,14 +6,15 @@ using UnityEngine.SceneManagement;
 public class TransScene : MonoBehaviour
 {
     // 公共字符串变量，用于在Inspector中设置要加载的场景名称
-    public string sceneName = "SampleScene";  // 默认场景名
+    public string sceneName = "CPR_Main";  // 默认场景名
 
     // 预定义的可加载场景列表
     private static readonly HashSet<string> validScenes = new HashSet<string>
     {
-        "SampleScene", // 根据实际场景名称进行添加
+        "CPR_Main", // 根据实际场景名称进行添加
         "TeachScene",
         "PracticeScene",
+        "ZhanTing",
         // 添加更多场景...
     };
 

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity WebView Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+        
+        .button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .button:hover {
+            background-color: #2980b9;
+        }
+        
+        #status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ecf0f1;
+        }
+        
+        .color-box {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            border: 2px solid #bdc3c7;
+            transition: background-color 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unity WebView 测试页面</h1>
+        
+        <div class="color-box" id="colorBox"></div>
+        
+        <p>这是一个用于测试Unity WebView功能的简单HTML页面。</p>
+        
+        <button class="button" onclick="changeColor()">改变颜色</button>
+        <button class="button" onclick="sendToUnity()">发送消息到Unity</button>
+        
+        <div id="status">等待与Unity交互...</div>
+    </div>
+
+    <script>
+        // 改变颜色方块的颜色
+        function changeColor() {
+            const colors = ['#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6', '#1abc9c'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('colorBox').style.backgroundColor = randomColor;
+        }
+        
+        // 发送消息到Unity
+        function sendToUnity() {
+            try {
+                // Unity WebView插件的消息发送方式
+                if (window.unityWebView && unityWebView.sendMessage) {
+                    unityWebView.sendMessage('WebViewHandler', 'ButtonClicked', 'Hello from WebView!');
+                } else {
+                    // 备用方案（取决于你使用的WebView插件）
+                    window.Unity.call('ButtonClicked|Hello from WebView!');
+                }
+                document.getElementById('status').textContent = '消息已发送到Unity';
+                document.getElementById('status').style.backgroundColor = '#d5f5e3';
+            } catch (e) {
+                document.getElementById('status').textContent = '发送消息失败: ' + e.message;
+                document.getElementById('status').style.backgroundColor = '#fadbd8';
+            }
+        }
+        
+        // 从Unity接收消息
+        function receiveFromUnity(message) {
+            document.getElementById('status').textContent = '收到Unity消息: ' + message;
+            document.getElementById('status').style.backgroundColor = '#eaf2f8';
+        }
+    </script>
+</body>
+</html>
+
