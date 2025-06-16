@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: ea92dc37ab9309a4ba070f9899177fe7
+timeCreated: 1575114913
+licenseType: Store
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cinema02Floor
+    100002: Cinema02Floor_a
+    100004: Cinema02Wall
+    100006: //RootNode
+    100008: CinemaLamp02
+    100010: CinemaSeats01
+    400000: Cinema02Floor
+    400002: Cinema02Floor_a
+    400004: Cinema02Wall
+    400006: //RootNode
+    400008: CinemaLamp02
+    400010: CinemaSeats01
+    2300000: Cinema02Floor
+    2300002: Cinema02Floor_a
+    2300004: Cinema02Wall
+    2300006: CinemaLamp02
+    2300008: CinemaSeats01
+    3300000: Cinema02Floor
+    3300002: Cinema02Floor_a
+    3300004: Cinema02Wall
+    3300006: CinemaLamp02
+    3300008: CinemaSeats01
+    4300000: Cinema02Wall
+    4300002: Cinema02Floor_a
+    4300004: CinemaSeats01
+    4300006: Cinema02Floor
+    4300008: CinemaLamp02
+    6400000: Cinema02Floor
+    6400002: Cinema02Floor_a
+    6400004: Cinema02Wall
+    6400006: CinemaLamp02
+    6400008: CinemaSeats01
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema02Floor
+    second: {fileID: 2100000, guid: fdb41e7072fe87e49bc14b40541f824e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema02Floor_a
+    second: {fileID: 2100000, guid: f619629dab1a9854384f4a418ab35d97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema02Soffit
+    second: {fileID: 2100000, guid: 3ce14867933bd0249aa1b4e190ff0baa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema02Wall
+    second: {fileID: 2100000, guid: c87bd4bc088d50c49903fcfd5c951ba7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema02WallBack
+    second: {fileID: 2100000, guid: 49e023e61bae80549a17c32aa0d74dfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CinemaLamp02
+    second: {fileID: 2100000, guid: 72f93d949f5aaba4da0453fdb6e89f11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CinemaSeats01
+    second: {fileID: 2100000, guid: b6d3faf59e6ea3e4ab49785174e9f9e3, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,164 @@
+fileFormatVersion: 2
+guid: 072504294a4ef4142ade6423cfce6df3
+timeCreated: 1575270466
+licenseType: Store
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cinema04Floor
+    100002: Cinema04Floor_a
+    100004: Cinema04Floor_b
+    100006: Cinema04Wall
+    100008: CinemaArmChair02
+    100010: //RootNode
+    100012: CinemaLamp04
+    100014: CinemaLamp04a
+    400000: Cinema04Floor
+    400002: Cinema04Floor_a
+    400004: Cinema04Floor_b
+    400006: Cinema04Wall
+    400008: CinemaArmChair02
+    400010: //RootNode
+    400012: CinemaLamp04
+    400014: CinemaLamp04a
+    2300000: Cinema04Floor
+    2300002: Cinema04Floor_a
+    2300004: Cinema04Floor_b
+    2300006: Cinema04Wall
+    2300008: CinemaArmChair02
+    2300010: CinemaLamp04
+    2300012: CinemaLamp04a
+    3300000: Cinema04Floor
+    3300002: Cinema04Floor_a
+    3300004: Cinema04Floor_b
+    3300006: Cinema04Wall
+    3300008: CinemaArmChair02
+    3300010: CinemaLamp04
+    3300012: CinemaLamp04a
+    4300000: Cinema04Wall
+    4300002: Cinema04Floor_a
+    4300004: CinemaArmChair02
+    4300006: Cinema04Floor
+    4300008: CinemaLamp04
+    4300010: Cinema04Floor_b
+    4300012: CinemaLamp04a
+    6400000: Cinema04Floor
+    6400002: Cinema04Floor_a
+    6400004: Cinema04Floor_b
+    6400006: Cinema04Wall
+    6400008: CinemaArmChair02
+    6400010: CinemaLamp04
+    6400012: CinemaLamp04a
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema04Floor
+    second: {fileID: 2100000, guid: 8978c0a2feaf7f04ab5813094f8703f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema04Floor_a
+    second: {fileID: 2100000, guid: 2a08b6abf4e83e14e8e8fffc6a6785c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema04Floor_b
+    second: {fileID: 2100000, guid: af1a4aedf7c7bbe44aefc643287c42f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema04Soffit
+    second: {fileID: 2100000, guid: 6ed94921fa5070d4fab2aef874dfe830, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema04Wall
+    second: {fileID: 2100000, guid: 4dd8d1dab0129944a8cbca4982a681f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CinemaArmChair02
+    second: {fileID: 2100000, guid: 392a5570384fda14999d8eccf64aced9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CinemaLamp04
+    second: {fileID: 2100000, guid: 1c6ddf6c941597f47a840a13c690d122, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
