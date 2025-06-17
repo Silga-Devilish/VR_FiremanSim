@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class CPRTrainingSimulator : MonoBehaviour
 {
+    [Header("Data Recording")]
+    public CPRDataRecorder dataRecorder;
+
     [Header("UI References")]
     public Image crosshair;
     public Slider depthSlider;
@@ -38,6 +41,9 @@ public class CPRTrainingSimulator : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         timingIndicator.gameObject.SetActive(false);
+        if (dataRecorder == null) dataRecorder = FindObjectOfType<CPRDataRecorder>();
+        dataRecorder.StartNewSession();
+    
     }
 
     void Update()
@@ -128,11 +134,11 @@ public class CPRTrainingSimulator : MonoBehaviour
     void EndPress()
     {
         if (!isPressing) return;
-        
+
         float pressDuration = Time.time - pressStartTime;
         isPressing = false;
         timingIndicator.gameObject.SetActive(false);
-        
+
         if (pressDuration >= minPressTime)
         {
             float interval = Time.time - lastPressTime;
@@ -160,6 +166,16 @@ public class CPRTrainingSimulator : MonoBehaviour
 
         feedbackText.GetComponent<Animator>().Play("FadeOut", 0, 0);
         pressCount++;
+        bool optimalDepth = currentDepth >= optimalDepthMin && currentDepth <= optimalDepthMax;
+    bool optimalDuration = pressDuration >= minPressTime && pressDuration <= maxPressTime;
+    
+    dataRecorder.RecordPress(
+        currentDepth * 100, // 转换为cm
+        pressDuration,
+        optimalDepth,
+        optimalDuration
+    );
+    
     }
 
     void UpdateChestAnimation()
