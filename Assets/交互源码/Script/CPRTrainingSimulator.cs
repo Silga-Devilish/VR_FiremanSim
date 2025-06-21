@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class CPRTrainingSimulator : MonoBehaviour
 {
@@ -12,16 +13,16 @@ public class CPRTrainingSimulator : MonoBehaviour
     public Text bpmText;
     public Text feedbackText;
     public GameObject chestCollider;
-    public Image timingIndicator; // 新增按压计时指示器
+    public Image timingIndicator;
 
     [Header("Settings")]
     public float maxDepth = 0.1f;
     public float optimalDepthMin = 0.05f;
     public float optimalDepthMax = 0.07f;
     public int optimalBPM = 110;
-    public float minPressTime = 0.2f; // 最短有效按压时间
-    public float maxPressTime = 0.4f; // 最长有效按压时间
-    public float depthResponseCurve = 2f; // 深度响应曲线系数
+    public float minPressTime = 0.2f;
+    public float maxPressTime = 0.4f;
+    public float depthResponseCurve = 2f;
 
     // 按压参数
     private float pressStartTime;
@@ -31,19 +32,24 @@ public class CPRTrainingSimulator : MonoBehaviour
     private float[] pressIntervals = new float[10];
     private int currentIntervalIndex;
     private bool isPressing;
-
-    // 模型位置
     private Vector3 chestOriginalPosition;
 
     void Start()
     {
         chestOriginalPosition = chestCollider.transform.localPosition;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         timingIndicator.gameObject.SetActive(false);
-        if (dataRecorder == null) dataRecorder = FindObjectOfType<CPRDataRecorder>();
-        dataRecorder.StartNewSession();
-    
+        
+        if (dataRecorder == null) 
+        {
+            dataRecorder = FindObjectOfType<CPRDataRecorder>();
+        }
+        
+        // 初始化UI事件系统
+        if (EventSystem.current == null)
+        {
+            gameObject.AddComponent<EventSystem>();
+            gameObject.AddComponent<StandaloneInputModule>();
+        }
     }
 
     void Update()
@@ -56,27 +62,34 @@ public class CPRTrainingSimulator : MonoBehaviour
 
     void UpdateCrosshair()
     {
-        crosshair.rectTransform.position = new Vector3(
-            Screen.width / 2, 
-            Screen.height / 2, 
-            0
-        );
+        // 只在非UI交互时显示准星
+        crosshair.enabled = !EventSystem.current.IsPointerOverGameObject();
+        crosshair.rectTransform.position = Input.mousePosition;
     }
 
     void HandleCPRInput()
     {
-        // 开始按压
-        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)))
+        // 鼠标左键按压（仅在未悬停在UI上时生效）
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-            if (Physics.Raycast(ray, out var hit, 2f) && hit.collider.gameObject == chestCollider)
+            if (Input.GetMouseButtonDown(0))
             {
-                StartPress();
+                TryStartPress(Input.mousePosition);
+            }
+
+            if (isPressing && Input.GetMouseButtonUp(0))
+            {
+                EndPress();
             }
         }
 
-        // 结束按压
-        if (isPressing && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space)))
+        // 空格键全局按压
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TryStartPress(new Vector3(Screen.width/2, Screen.height/2, 0));
+        }
+
+        if (isPressing && Input.GetKeyUp(KeyCode.Space))
         {
             EndPress();
         }
@@ -86,12 +99,21 @@ public class CPRTrainingSimulator : MonoBehaviour
         {
             float pressDuration = Time.time - pressStartTime;
             float normalizedTime = Mathf.Clamp01(pressDuration / maxPressTime);
-            
-            // 使用曲线函数使深度响应更自然
             currentDepth = maxDepth * Mathf.Pow(normalizedTime, depthResponseCurve);
-            
-            // 更新计时指示器
             UpdateTimingIndicator(pressDuration);
+        }
+    }
+
+    void TryStartPress(Vector3 screenPosition)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+        if (Physics.Raycast(ray, out var hit, 2f) && hit.collider.gameObject == chestCollider)
+        {
+            StartPress();
+        }
+        else if(screenPosition == Input.mousePosition) // 仅对鼠标点击给出反馈
+        {
+            ShowFeedback("<color=red>请对准胸部中央位置</color>");
         }
     }
 
@@ -139,48 +161,47 @@ public class CPRTrainingSimulator : MonoBehaviour
         isPressing = false;
         timingIndicator.gameObject.SetActive(false);
 
-        if (pressDuration >= minPressTime)
-        {
-            float interval = Time.time - lastPressTime;
-            pressIntervals[currentIntervalIndex] = interval;
-            currentIntervalIndex = (currentIntervalIndex + 1) % pressIntervals.Length;
-            lastPressTime = Time.time;
-            pressCount++;
-        }
-
         // 按压质量评估
         if (pressDuration < minPressTime)
         {
-            feedbackText.text = "<color=red>按压太短！需要至少" + minPressTime.ToString("0.0") + "秒</color>";
-            currentDepth = 0; // 无效按压不计深度
+            ShowFeedback($"<color=red>按压太短！需要至少{minPressTime.ToString("0.0")}秒</color>");
+            currentDepth = 0;
         }
         else if (pressDuration > maxPressTime)
         {
-            feedbackText.text = "<color=red>按压过长！不要超过" + maxPressTime.ToString("0.0") + "秒</color>";
-            currentDepth = optimalDepthMax; // 超过按最大深度计算
+            ShowFeedback($"<color=red>按压过长！不要超过{maxPressTime.ToString("0.0")}秒</color>");
+            currentDepth = optimalDepthMax;
         }
         else
         {
-            feedbackText.text = "<color=green>按压良好！深度：" + (currentDepth * 100).ToString("0") + "cm</color>";
+            ShowFeedback($"<color=green>按压良好！深度：{(currentDepth * 100).ToString("0")}cm</color>");
         }
 
-        feedbackText.GetComponent<Animator>().Play("FadeOut", 0, 0);
-        pressCount++;
-        bool optimalDepth = currentDepth >= optimalDepthMin && currentDepth <= optimalDepthMax;
-    bool optimalDuration = pressDuration >= minPressTime && pressDuration <= maxPressTime;
-    
-    dataRecorder.RecordPress(
-        currentDepth * 100, // 转换为cm
-        pressDuration,
-        optimalDepth,
-        optimalDuration
-    );
-    
+        // 记录有效按压
+        if (pressDuration >= minPressTime)
+        {
+            pressCount++;
+            bool optimalDepth = currentDepth >= optimalDepthMin && currentDepth <= optimalDepthMax;
+            dataRecorder?.RecordPress(
+                currentDepth * 100, // 转换为cm
+                pressDuration,
+                optimalDepth,
+                pressDuration >= minPressTime && pressDuration <= maxPressTime
+            );
+        }
+    }
+
+    void ShowFeedback(string message)
+    {
+        feedbackText.text = message;
+        if (feedbackText.GetComponent<Animator>() != null)
+        {
+            feedbackText.GetComponent<Animator>().Play("FadeOut", 0, 0);
+        }
     }
 
     void UpdateChestAnimation()
     {
-        // 平滑过渡到目标深度
         float targetY = chestOriginalPosition.y - currentDepth;
         chestCollider.transform.localPosition = new Vector3(
             chestOriginalPosition.x,
@@ -188,10 +209,7 @@ public class CPRTrainingSimulator : MonoBehaviour
             chestOriginalPosition.z
         );
 
-        // 更新UI深度显示
         depthSlider.value = currentDepth / maxDepth;
-        
-        // 深度反馈颜色
         depthSlider.fillRect.GetComponent<Image>().color = 
             (currentDepth >= optimalDepthMin && currentDepth <= optimalDepthMax) ? 
             Color.green : Color.red;
@@ -203,9 +221,8 @@ public class CPRTrainingSimulator : MonoBehaviour
 
         float total = 0;
         int count = 0;
-        
-        // 只计算最近5次按压间隔（避免初期不准确数据）
         int validCount = Mathf.Min(5, pressCount - 1);
+        
         for (int i = 0; i < validCount; i++)
         {
             int index = (currentIntervalIndex - 1 - i + pressIntervals.Length) % pressIntervals.Length;

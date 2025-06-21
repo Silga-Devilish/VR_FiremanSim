@@ -101,8 +101,8 @@ Material:
     - __dirty: 0
     m_Colors:
     - _GlitchVertexOffset: {r: 0.5, g: 0, b: 0, a: 0}
-    - _MainColor: {r: 0, g: 0.6365239, b: 0.92103124, a: 0.003921569}
-    - _Scan1Color: {r: 0, g: 2.596422, b: 11.020355, a: 0}
+    - _MainColor: {r: 1, g: 0.27058828, b: 0.40056163, a: 0.003921569}
+    - _Scan1Color: {r: 9.18871, g: 10.519179, b: 14.713041, a: 0}
     - _ScanLineVertexOffset: {r: 0.5, g: 0, b: 0, a: 0}
     - _ScanSpeed: {r: 0, g: 1, b: 0, a: 0}
     - _ShinningSpeed: {r: 0, g: 0.5, b: 0, a: 0}
